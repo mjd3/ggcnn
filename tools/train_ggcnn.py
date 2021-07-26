@@ -7,19 +7,18 @@ import logging
 import cv2
 
 import torch
-import torch.utils.data
 import torch.optim as optim
 
 from torchsummary import summary
 
 import tensorboardX
 
-from utils.visualisation.gridshow import gridshow
+from ggcnn.utils.visualisation.gridshow import gridshow
 
-from utils.dataset_processing import evaluation
-from utils.data import get_dataset
-from models import get_network
-from models.common import post_process_output
+from ggcnn.utils.dataset_processing import evaluation
+from ggcnn.utils.data import get_dataset
+from ggcnn.models import get_network
+from ggcnn.models.common import post_process_output
 
 logging.basicConfig(level=logging.INFO)
 

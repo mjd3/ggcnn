@@ -1,11 +1,11 @@
 import argparse
 import logging
+import torch
 
-import torch.utils.data
-
-from models.common import post_process_output
-from utils.dataset_processing import evaluation, grasp
-from utils.data import get_dataset
+from ggcnn.models.common import post_process_output
+from ggcnn.models import get_network
+from ggcnn.utils.dataset_processing import evaluation, grasp
+from ggcnn.utils.data import get_dataset
 
 logging.basicConfig(level=logging.INFO)
 
@@ -46,8 +46,10 @@ if __name__ == '__main__':
     args = parse_args()
 
     # Load Network
-    net = torch.load(args.network)
+    net = get_network("ggcnn2")()
+    net.load_state_dict(torch.load(args.network))
     device = torch.device("cuda:0")
+    net.to(device)
 
     # Load Dataset
     logging.info('Loading {} Dataset...'.format(args.dataset.title()))

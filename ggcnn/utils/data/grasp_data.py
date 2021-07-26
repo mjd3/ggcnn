@@ -1,9 +1,5 @@
 import numpy as np
-
 import torch
-import torch.utils.data
-
-import random
 
 
 class GraspDatasetBase(torch.utils.data.Dataset):
@@ -50,8 +46,8 @@ class GraspDatasetBase(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         if self.random_rotate:
-            rotations = [0, np.pi/2, 2*np.pi/2, 3*np.pi/2]
-            rot = random.choice(rotations)
+            rotations = [0, np.pi/2, np.pi, 3*np.pi/2]
+            rot = np.random.choice(rotations)
         else:
             rot = 0.0
 

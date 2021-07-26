@@ -1,3 +1,9 @@
+# Docker Instructions
+```shell
+docker build -t ggcnn .
+docker run -it --rm --gpus all -v $(pwd)/datasets/cornell_grasp_dataset:/dataset:ro ggcnn
+```
+
 **Note:** This is a cleaned-up, PyTorch port of the GG-CNN code.  For the original Keras implementation, see the `RSS2018` branch.  
 Main changes are major code clean-ups and documentation, an improved GG-CNN2 model, ability to use the Jacquard dataset and simpler evaluation.    
 
